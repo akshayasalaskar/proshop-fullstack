@@ -70,25 +70,13 @@ const ProductEditScreen = () => {
     }
   }, [product]);
 
-  // const uploadFileHandler = async (e) => {
-  //   const formData = new FormData();
-  //   formData.append("image", e.target.files[0]);
-  //   try {
-  //     const res = await uploadProductImage(formData).unwrap();
-  //     toast.success(res.message);
-  //     setImage(res.image);
-  //   } catch (err) {
-  //     toast.error(err?.data?.message || err.error);
-  //   }
-  // };
-
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
     try {
       const res = await uploadProductImage(formData).unwrap();
       toast.success(res.message);
-      setImage(res.data.image); // Update this line
+      setImage(res.image); // Update this line
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -134,7 +122,7 @@ const ProductEditScreen = () => {
                 type="text"
                 placeholder="Enter image url"
                 value={image}
-                onChange={(e) => setImage(e.target.value)}
+                onChange={(e) => setImage}
               ></Form.Control>
               <Form.Control
                 label="Choose File"
